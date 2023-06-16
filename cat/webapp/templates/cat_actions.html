@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Информация о коте</title>
+</head>
+<body>
+<h2>Имя вашего кота: {{ cat.name }}</h2>
+<h3>Возраст: {{ cat.age }}</h3>
+<h3>Уровень сытости: {{ cat.hunger_level }}</h3>
+<h3>Уровень счастья: {{ cat.happiness_level }}</h3>
+<img src="{% static cat.set_avatar %}" alt="Аватар кота">
+<form method="post" action="{% url 'interact' %}">
+    {% csrf_token %}
+    <select id="action" name="action" required>
+        <option value="feed">покормить</option>
+        <option value="play">поиграть</option>
+        <option value="sleep">уложить спать</option>
+    </select>
+    <button type="submit">выполнить</button>
+</form>
+</body>
+</html>
